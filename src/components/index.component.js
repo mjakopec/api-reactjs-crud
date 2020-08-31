@@ -12,7 +12,11 @@ export default class Index extends Component {
     }
     async componentDidMount(){
         try{
-          var NotesData = await axios.get('http://localhost:5000/notes')
+          var NotesData = await axios.get('http://localhost:5000/notes',
+          {auth: {
+            username: 'test',
+            password: 'test'
+          }});
           this.setState({notes: NotesData.data})
         }
         catch(error){

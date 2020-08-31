@@ -12,12 +12,22 @@ class TableRow extends Component {
         super(props);
         this.delete = this.delete.bind(this);
     }
-    delete() {
-        axios.delete('http://localhost:5000/notes/'+this.props.obj._id)
-            .then(console.log('Deleted'))
-            .catch(err => console.log(err))
+
+    delete = async (e)=> {
+      e.preventDefault();
+    try {
+        await axios.delete('http://localhost:5000/notes/'+this.props.obj._id,{
+          auth: {
+          username: 'test',
+          password: 'test'
+        }})
+        console.log('Deleted');
     }
-    
+    catch(error){
+      console.log({response:error.message});
+    }
+  }
+
     render() {
     return (
         <tr>
@@ -31,7 +41,7 @@ class TableRow extends Component {
           <Link to={"/edit/"+this.props.obj._id} className="btn btn-primary">Edit</Link>
           </td>
           <td>
-          <button onClick={this.delete} className="btn btn-danger">Delete</button>
+          <button onClick={this.delete}  className="btn btn-danger">Delete</button>
           </td>
         </tr>
     );

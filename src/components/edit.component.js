@@ -16,7 +16,11 @@ export default class Edit extends Component {
 
     async componentDidMount() {
       try{
-      const UpdateNote = await axios.get('http://localhost:5000/notes/'+this.props.match.params.id)
+      const UpdateNote = await axios.get('http://localhost:5000/notes/'+this.props.match.params.id,
+      {auth: {
+        username: 'test',
+        password: 'test'
+      }})
       const {title,content}=UpdateNote.data;
       this.setState({title,content});
       }
@@ -35,7 +39,11 @@ export default class Edit extends Component {
       {
         title: this.state.title,
         content: this.state.content
-      });
+      },
+      {auth: {
+        username: 'test',
+        password: 'test'
+      }});
       this.setState({response: obj.data });
       this.props.history.push('/index');
   }
