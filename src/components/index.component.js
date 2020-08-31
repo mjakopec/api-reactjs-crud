@@ -24,10 +24,16 @@ export default class Index extends Component {
         }
 
     }
+
     tabRow(){
-      return this.state.notes.map(function(object, i){
-          return <TableRow obj={object} key={i} />;
+          return this.state.notes.map((object, i) => {
+            console.log(object,i);
+            return <TableRow obj={object} key={i} indice={i} delete ={ (ind) => this.deleteItem(ind)} />;
       });
+    }
+
+    deleteItem(index){
+      this.setState({notes : this.state.notes.filter((_,i) => i !== index)});
     }
 
     render() {

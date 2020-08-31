@@ -66,3 +66,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+from url
+https://appdividend.com/2018/11/11/react-crud-example-mern-stack-tutorial/
+
+active delete fix
+https://github.com/diegodelfin7/reactcrud/blob/master/src/components/TableRow.js

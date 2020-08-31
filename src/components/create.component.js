@@ -22,12 +22,20 @@ export default class Create extends Component {
   onSubmit = async (e)=> {
     e.preventDefault();
   try{
-    const obj = await axios.post('http://localhost:5000/notes/', 
+    await axios.post('http://localhost:5000/notes/', 
     {
       title: this.state.title,
       content: this.state.content
+    },
+    {auth: {
+      username: 'test', 
+      password: 'test'
+    }
     });
-    this.setState({response: obj.data });
+    this.setState({
+			title : '',
+			content : ''
+		});
   }
   catch(error){
     this.setState({ response: error.message });

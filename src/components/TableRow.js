@@ -21,6 +21,7 @@ class TableRow extends Component {
           username: 'test',
           password: 'test'
         }})
+        this.props.delete(this.props.indice);
         console.log('Deleted');
     }
     catch(error){
